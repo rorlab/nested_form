@@ -1,0 +1,32 @@
+<%= simple_form_for(@person) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <fieldset class="offset-by-one">
+      <legend>Person</legend>
+      <div class="row">
+        <div class="three columns"><%= f.input :name %></div>
+        <div class="three columns"><%= f.input :gender%></div>
+        <div class="six columns"><%= f.input :mobile%></div>
+      </div>
+    </fieldset>
+    <fieldset class="offset-by-one">
+      <legend>Contact</legend>
+      <%= f.fields_for :contact do | contact | %>
+        <div class="row">
+          <div class="two column"><%= contact.input :zip_code %></div>
+          <div class="ten columns"><%= contact.input :address %></div>
+        </div>
+        <div class="row">
+          <div class="six columns"><%= contact.input :phone %></div>
+          <div class="six columns"><%= contact.input :fax %></div>
+        </div>
+      <% end %>
+    </fielset>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class:"button round" %>
+  </div>
+<% end %>
