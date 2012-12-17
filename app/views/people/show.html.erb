@@ -1,20 +1,75 @@
-<p id="notice"><%= notice %></p>
+<% flash.each do |name, msg| %>
+  <div class="alert-box <%= name == :notice ? "success" : "alert" %>">
+    <a class="close" data-dismiss="alert">&times;</a>
+    <%= msg  %>
+  </div>
+<% end %>
 
-<p>
-  <b>Name:</b>
-  <%= @person.name %>
-</p>
+<div class="ten columns offset-by-one">
+<table class="twelve columns">
+  <tr>
+    <td width="35%">
+      <b>Name:</b>
+    </td>
+    <td>
+      <%= @person.name %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Gender:</b>
+    </td>
+    <td>
+      <%= @person.gender %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Mobile:</b>
+    </td>
+    <td>
+      <%= @person.mobile %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Zip code:</b>
+    </td>
+    <td>
+      <%= @person.contact.zip_code %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Address:</b>
+    </td>
+    <td>
+      <%= @person.contact.address %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Phone number:</b>
+    </td>
+    <td>
+      <%= @person.contact.phone %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Phone number:</b>
+    </td>
+    <td>
+      <%= @person.contact.fax %>
+    </td>
+  </tr>  
+</table>
+</div>
 
-<p>
-  <b>Gender:</b>
-  <%= @person.gender %>
-</p>
-
-<p>
-  <b>Mobile:</b>
-  <%= @person.mobile %>
-</p>
-
-
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<hr>
+<div class="row">
+  <div class="twelve columns">
+    <%= link_to 'Edit', edit_person_path(@person) %> |
+    <%= link_to 'Back', people_path %>
+  </div>
+</div>

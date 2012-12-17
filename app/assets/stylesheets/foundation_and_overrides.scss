@@ -242,3 +242,21 @@
 // http://www.modularscale.com by Tim Brown
 // https://github.com/scottkellum/modular-scale by scottkellum
 @import 'foundation';
+
+.alert-box {
+  a:hover {
+    background-color: transparent;
+  }
+}
+.alert-error {
+  color:#800000;
+}
+.field_with_errors {
+  background-color: transparent !important;
+  color:#800000 !important;
+  margin-bottom: 10px;
+  input {
+    margin-bottom:5px !important;
+  }
+
+}
