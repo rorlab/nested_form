@@ -26,6 +26,7 @@ class PeopleController < ApplicationController
   def new
     @person = Person.new
     @person.build_contact
+    @person.communications.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,6 +38,7 @@ class PeopleController < ApplicationController
   def edit
     @person = Person.find(params[:id])
     @person.build_contact if @person.contact.nil?
+    @person.communications.build
   end
 
   # POST /people
@@ -49,6 +51,7 @@ class PeopleController < ApplicationController
         format.html { redirect_to @person, notice: 'Person was successfully created.' }
         format.json { render json: @person, status: :created, location: @person }
       else
+        @person.communications.build
         format.html { render action: "new" }
         format.json { render json: @person.errors, status: :unprocessable_entity }
       end
@@ -65,6 +68,7 @@ class PeopleController < ApplicationController
         format.html { redirect_to @person, notice: 'Person was successfully updated.' }
         format.json { head :no_content }
       else
+        @person.communications.build
         format.html { render action: "edit" }
         format.json { render json: @person.errors, status: :unprocessable_entity }
       end

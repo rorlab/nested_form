@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  person: 
+  profile_type: 
+  access_point: MyString
+
+two:
+  person: 
+  profile_type: 
+  access_point: MyString

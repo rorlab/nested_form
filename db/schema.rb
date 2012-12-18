@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217092013) do
+ActiveRecord::Schema.define(:version => 20121218075931) do
+
+  create_table "communications", :force => true do |t|
+    t.integer  "person_id"
+    t.integer  "profile_type_id"
+    t.string   "access_point"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "communications", ["person_id"], :name => "index_communications_on_person_id"
+  add_index "communications", ["profile_type_id"], :name => "index_communications_on_profile_type_id"
 
   create_table "contacts", :force => true do |t|
     t.integer  "person_id"
@@ -29,6 +40,12 @@ ActiveRecord::Schema.define(:version => 20121217092013) do
     t.string   "name"
     t.string   "gender"
     t.string   "mobile"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "profile_types", :force => true do |t|
+    t.string   "comm_type"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

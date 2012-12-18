@@ -1,4 +1,4 @@
-<%= simple_form_for(@person) do |f| %>
+<%= simple_form_for(@person, html:{class:"custom"}) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -10,6 +10,18 @@
         <div class="six columns"><%= f.input :mobile%></div>
       </div>
     </fieldset>
+
+    <fieldset class="offset-by-one">
+      <legend>Communications</legend>
+      <%= f.fields_for :communications do | communication | %>
+        <div class="row">
+          <div class="three columns"><%= communication.association :profile_type, :collection => ProfileType.all.map {|type|[type.comm_type, type.id]}, input_html:{class:"three columns"} %></div>
+          <div class="eight columns"><%= communication.input :access_point %></div>
+          <div class="one columns" style="margin-top:25px;"><%= communication.input :_destroy, as: :boolean, label: false %></div>
+        </div>
+      <% end %>
+    </fieldset>
+
     <fieldset class="offset-by-one">
       <legend>Contact</legend>
       <%= f.fields_for :contact do | contact | %>
